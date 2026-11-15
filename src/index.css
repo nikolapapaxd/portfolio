@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    background-color: #050507;
+    color: #F4F4F6;
+    overflow-x: hidden;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  a,
+  button,
+  [role="button"],
+  [role="slider"],
+  input[type="range"] {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.animate-card-reveal {
+  animation: cardReveal 680ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes itemFadeUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: itemFadeUp 620ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes staggerSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.animate-stagger-in {
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: staggerSlideIn 580ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes mistDrift {
+  0%, 100% {
+    transform: translate3d(-3%, 0, 0) scale(1.03);
+  }
+  50% {
+    transform: translate3d(3%, -1.5%, 0) scale(1.06);
+  }
+}
+
+.animate-mist-drift {
+  animation: mistDrift 22s ease-in-out infinite;
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #272732;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F50;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
